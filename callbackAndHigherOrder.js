@@ -25,7 +25,7 @@ multiply(4, 2, answer => console.log('The answer is ' + answer))
 // The names array will be used in problems 2 - 6.
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
+let names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 // Do not edit the code above.
 
 
@@ -97,9 +97,9 @@ const contains = (arr, name, cb) => {
 
 contains(names, 'Colt', result => {
   if(result === true){
-    console.log('Colt is in the array')
+    console.log('Colt is in the array');
   } else {
-    console.log('Colt is not in the array')
+    console.log('Colt is not in the array');
   }
 })
 
@@ -124,7 +124,7 @@ const uniq = (arr, cb) => {
       }
     }
   }
-  cb(arr);
+  return cb(arr);
 }
 
 /*
@@ -148,6 +148,11 @@ uniq(names, uniqArr => console.log(`the new names array with all the duplicate n
 */
 
 // CODE HERE 
+const each = (arr, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+}
 
 
 /*
@@ -159,6 +164,10 @@ uniq(names, uniqArr => console.log(`the new names array with all the duplicate n
 
 // CODE HERE
 
+each(names, (itemParam, indexParam) => {
+  console.log(`the item at index ${indexParam} is ${itemParam}`);
+})
+
 
 ////////// PROBLEM 7 //////////
 
@@ -167,8 +176,9 @@ uniq(names, uniqArr => console.log(`the new names array with all the duplicate n
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
+
 // Do not edit the code below.
-var users = [
+let users = [
   {
     id: '12d',
     email: 'tyler@gmail.com',
@@ -191,15 +201,22 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === id) {
+        cb(arr[i]);
+      }
+    }
+  }
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
 
 ////////// CHALLENGE //////////
 
