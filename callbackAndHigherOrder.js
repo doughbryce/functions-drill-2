@@ -82,20 +82,26 @@ last(names, lastName => {
 */
 
 // CODE HERE 
-// const 
+const contains = (arr, name, cb) => {
+  if (arr.includes(name)) {
+    cb(true);
+  } else {
+    cb(false);
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
@@ -109,6 +115,18 @@ last(names, lastName => {
 
 // CODE HERE
 
+const uniq = (arr, cb) => {
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(i, 1);
+      }
+    }
+  }
+  cb(arr);
+}
+
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
   The callback function should take in one parameter called uniqArr.
@@ -117,6 +135,8 @@ last(names, lastName => {
 */
 
 // CODE HERE
+
+uniq(names, uniqArr => console.log(`the new names array with all the duplicate names removed is ${uniqArr}`));
 
 
 
