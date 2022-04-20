@@ -18,7 +18,8 @@ const mixedNumbers = [6,3,1,7,5,2,6,8,9,4,2,7,9,3,1,8,4,3];
 */
 
 // CODE HERE
-// const evenNumbers // = mixedNumbers.filter(/* Provide Your Callback Here */)
+const evenNumbers = mixedNumbers.filter((elem, i, arr) => arr[i] % 2 === 0);
+// console.log(evenNumbers);
 
 
 
@@ -39,14 +40,16 @@ const prices = [15.00, 23.00, 78.00, 34.00, 12.00, 86.00, 12.00, 79.00, 32.00];
 */
 
 // CODE HERE
-// const postTaxPrices // = prices.map(/* Provide Your Callback Here );
+const postTaxPrices = prices.map(elem => (Math.floor(elem * 107))/100);
+
+// console.log(postTaxPrices);
 
 
 
 ////////// PROBLEM 3 //////////
 
 // Do not edit the code below.
-const populations = [8175133, 3792621, 2695598, 2100263];
+const populations = [15, 20, 35, 30];
 // Do not edit the code above.
 
 /*
@@ -57,8 +60,8 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 */
 
 // CODE HERE
-// const totalPopulation //  = populations.reduce(/* Provide Your Callback Here */)
-
+const totalPopulation = populations.reduce((sum, curr) => sum += curr)
+// console.log(totalPopulation);
 
 
 ////////// PROBLEM 4 //////////
@@ -82,8 +85,13 @@ const monstersInYourPocket = [{"monster":"Bulbabunny","CP":156},{"monster":"Bulb
 */
 
 // CODE HERE
-// const myStrongest // = monstersInYourPocket.filter(/* Provide Your Callback Here */)
+const myStrongest = monstersInYourPocket.filter(elem => {
+  if (elem.CP > 200) {
+    return elem;
+  }
+});
 
+// console.log(myStrongest);
 
 
 ////////// PROBLEM 5 //////////
@@ -101,6 +109,11 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
 
 // CODE HERE
 
+const addTax = orders.map((elem, i, arr) => {
+  return (Math.floor(elem.price * ((elem.tax + 1) * 100)))/100
+});
+
+// console.log(addTax);
 
 
 ////////// PROBLEM 6 //////////
@@ -120,3 +133,12 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
 */
 
 // CODE HERE
+let bobsTotal = 0;
+
+const purchased = purchases.reduce((acc, curr) => {
+  if (curr.owner === `Bob`) {
+    bobsTotal += curr.price;
+  }
+})
+
+// console.log(bobsTotal)
